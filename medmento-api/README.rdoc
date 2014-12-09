@@ -1,28 +1,22 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails API Allows you to run the Medmento Application along with the Medmento-Frontend
 
-Things you may want to cover:
+To Run the Rails API background on your local Machine:
 
-* Ruby version
 
-* System dependencies
+
+
+* run rake db:create db:migrate db:seed
+* Open 5 tabs in your terminal and move to this root directory in all.  Then in order start the following servers on the commandline with the following commands, each in its own tab.
+  1) redis server
+  2) be sidekiq
+  3) ./bin/ngrok 3000
+  4) rails s
+  5) be clockwork config/clock.rb will start the clockwork gem and it will begin pinging the Database for events to fire off.
 
 * Configuration
+  The url given to you in the ngrok tab must be passed along in in your local .env file for use throughout the app  ex: BASE_URL=https://1c1e5a20.ngrok.com/webhooks
 
-* Database creation
+* Now you can open the front end file and play with the app.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

@@ -9,14 +9,14 @@ To Run the Rails API background on your local Machine:
 
 * run rake db:create db:migrate db:seed
 * Open 5 tabs in your terminal and move to this root directory in all.  Then in order start the following servers on the commandline with the following commands, each in its own tab.
-  1) redis server
-  2) be sidekiq
-  3) ./bin/ngrok 3000
-  4) rails s
-  5) be clockwork config/clock.rb will start the clockwork gem and it will begin pinging the Database for events to fire off.
+  * redis server
+  * be sidekiq
+  * ./bin/ngrok 3000
+  * rails s
+  * be clockwork config/clock.rb will start the clockwork gem and it will begin pinging the Database for events to fire off.
 
 * Configuration
-  The url given to you in the ngrok tab must be passed along in in your local .env file for use throughout the app  ex: BASE_URL=https://1c1e5a20.ngrok.com/webhooks
+  The url given to you in the ngrok tab must be passed along in in your local .env file for use throughout the app  ex: BASE_URL="https://1c1e5a20.ngrok.com/webhooks" (" " are not required)
 
 * Now you can open the front end file and play with the app.
 

@@ -1,0 +1,318 @@
+<!doctype html>
+<html class="no-js" lang="en" data-framework="javascript">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medmento Clientside</title>
+  <link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Rosario' rel='stylesheet' type='text/css'>
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Prociono' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="foundation-5.4.7/css/foundation.css" />
+  <link rel="stylesheet" href="foundation-5.4.7/css/foundation.min.css" />
+  <link rel="stylesheet" href="medmento.css">
+
+  <script src="foundation-5.4.7/js/vendor/modernizr.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="foundation-5.4.7/js/vendor/fastclick.js"></script>
+
+  <script src="foundation-5.4.7/js/foundation.min.js"></script>
+  <script src="foundation-5.4.7/js/foundation/foundation.reveal.js"></script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>
+  <script src="medmento.js"></script>
+</head>
+
+<body>
+
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a id="home-med" href="#">Medment<i class="fa fa-clock-o"></i></a></h1>
+<!-- <i class="fa fa-clock-o"></i>
+ -->
+
+      </li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+
+      <ul class="right">
+        <li class="active"><a id="logout" href="homepage.html">LOGOUT</a></li>
+      </ul>
+
+    </section>
+  </nav>
+
+  <!-- form modals -->
+  <div id="formModal" class="reveal-modal" data-reveal>
+    <div class="row">
+      <h1 class="modal-header">Set Reminder</h1>
+      <form id="reminder-form">
+        <fieldset>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Patient Name
+                <input name='patient_name' type="text" placeholder="Please enter the person's name to call" />
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Patient Phone Number
+                <input  name="patient_number" type="tel" placeholder="###-###-####" />
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Medication
+                <input  type="text" name="drug_name" placeholder="Please enter the medication name" />
+              </label>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="large-12 columns">
+              <!-- <form id="test-day"> -->
+              <label>Frequency</label>
+              <input type="radio" name="frequency_period_id" value="4" id="daily"><span id="daily-text"> Daily</span><br>
+              <input type="radio" name="frequency_period_id" value="5" id="weekly"><span id="weekly-text"> Weekly</span><br>
+              <!-- </form> -->
+              <input type="hidden" name="frequency_quantity" value='1'>
+              <input type="hidden" name="at" value="" id="at">
+
+              <div class="row">
+               <div class="large-3 columns">
+                <span id="at">At </span><input id="reminder-time" type="time"><br>
+              </div>
+
+              <div class="large-9 columns">
+                <div id='weekly-dropdown' name="">
+                   <span id="on">On</span>
+                  <select id="day-of-week">
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="large-12 columns" >
+            <label>Message
+              <textarea name="message" placeholder="Add a custom message"></textarea>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <input id="save-button" class="button right small radius" type='submit' value='Save'>
+
+
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="editModal" class="reveal-modal" data-reveal>
+  <div class="row">
+    <h3 class="modal-header">Edit Reminder</h3>
+    <form id="edit-reminder-form">
+      <fieldset>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Patient Name
+              <input name='patient_name' id='patient_name' type="text" placeholder="Please enter the person's name to call" />
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Patient Phone Number
+              <input  name="patient_number" id="patient_number" type="tel" placeholder="###-###-####" />
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Medication
+              <input  type="text" name="drug_name" id="drug_name" placeholder="Please enter the medication name" />
+            </label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="large-12 columns">
+            <!-- <form id="test-day"> -->
+            <input type="radio" name="frequency_period_id" value="4" id="edit-daily"><span> Daily</span><br>
+            <input type="radio" name="frequency_period_id" value="5" id="edit-weekly"><span> Weekly</span><br>
+            <!-- </form> -->
+            <input type="hidden" name="frequency_quantity" value='1'>
+            <input type="hidden" name="at" value="" id="edit-at">
+
+            <div class="row">
+             <div class="large-3 columns">
+              At <input id="edit-reminder-time" type="time"><br>
+            </div>
+
+            <div class="large-9 columns">
+              <div id='edit-weekly-dropdown' name="">
+                On
+                <select id="edit-day-of-week">
+                  <option value="Sunday">Sunday</option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns" >
+          <label>Message
+            <textarea name="message" id="message" placeholder="Add a custom message"></textarea>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <input id="save-edit-button" class="button right small radius" type='submit' value='Save'>
+
+          <button  id="clear-button-modal" class="button right small radius form-clear">Clear Form</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<a class="close-reveal-modal">&#215;</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- main reminders page -->
+
+<div class="row home-header-div panel" id="set-reminder">
+  <div class="large-2 columns" id="set-reminder-btn">   <a href="#" data-reveal-id="formModal" class="button radius">Set A Reminder</a></div>
+  <div class="large-10 columns" id="header-top"><h1>Your Scheduled Phone Call Reminders</h1></div>
+</div>
+
+<div class='row main-section home-header-div'>
+
+  <div class='large-12 columns' id="top-header-div">
+    <div class='reminder-container '>
+
+<!--       <div class='row'>
+        <div class='large-12 small-centered columns header-text' >
+          <div class='large-3 columns'><h2><i class="fa fa-user"></i>  Person to Call</h2></div>
+          <div class='large-3 columns'><h2><i class="fa fa-plus-square"></i>  Medication</h2></div>
+          <div class='large-3 columns'><h2><i class="fa fa-phone-square"></i></i>  Message</h2></div>
+          <div class='large-2 columns edit-header' id="edit-header"><h2><i class="fa fa-pencil"></i> Options</h2></div>
+
+        </div>
+      </div> -->
+
+      <div class='row'>
+        <div class='large-12 small-centered columns header-text' >
+          <div class='large-2 columns'><h2><i class="fa fa-user"></i>  Person to Call</h2></div>
+          <div class='large-2 columns'><h2><i class="fa fa-plus-square"></i>  Medication</h2></div>
+          <div class='large-3 columns'><h2><i class="fa fa-phone-square"></i></i>  Message</h2></div>
+          <div class='large-3 columns edit-header'><h2><i class="fa fa-pencil"></i> Options</h2></div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <hr/>
+
+  <div id="account-reminders">
+  </div>
+
+
+
+<div id="chartModal" class="reveal-modal" data-reveal>
+  <h2>Pain Chart For <span></span></h2>
+  <h5>Pain Average: <span id="pain-avg"></span>   (Pain Scale 0-9)</h5>
+  <div class="pain-chart-div">
+    <canvas id="user-chart-modal" width="800" height="600"></canvas>
+    <a class="close-reveal-modal">&#215;</a>
+    <div><p>Date</p></div>
+  </div>
+
+</div>
+
+
+  <script id="person-template" type="text/x-handlebars-template">
+  <div class='large-12 small-centered columns' id="med-row" data-event-id="{{eventId}}">
+  <div class='large-2 columns' id="patient_name"><p>{{patient_name}}</p></div>
+  <div class='large-2 columns' id="drug_name"><p>{{drug_name}}</p></div>
+  <div class='large-4 columns' id="message"><p>{{message}}</p></div>
+
+<div class='large-1 columns'><a data-reveal-id="chartModal"><p><button  id="data-button" class="button right tiny radius form-clear">Data</button></p></a></div>
+
+
+  <div class='large-1 columns edit-event' id="edit"><a href="#" data-reveal-id="editModal"><p><button class="button right tiny radius form-clear">Edit</button></p></a></div>
+  <div class='large-1 columns delete-event' id="delete"><a><p><button  class="button right tiny radius form-clear">Delete</button></p></a></div>
+  <hr/>
+  </div>
+  </script>
+
+
+  <script>
+  $(document).foundation();
+  $(".form-clear").on("click",function(){
+    $("form div").removeClass("error");
+    $("form label").removeClass("error");
+    $("form")[0].reset();
+  });
+
+
+  </script>
+  <script src="foundation-5.4.7/js/handlebars-v2.0.0.js"></script>
+  <script src="foundation-5.4.7/js/Chart.js"></script>
+
+</body>
+</html>

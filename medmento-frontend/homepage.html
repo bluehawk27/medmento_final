@@ -1,0 +1,146 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedMento | Welcome</title>
+  <link rel="stylesheet" href="foundation-5.4.7/css/foundation.css" />
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Rosario' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="foundation-5.4.7/css/home-medmento.css">
+  <script src="foundation-5.4.7/js/vendor/modernizr.js"></script>
+</head>
+<body>
+
+  <div id="myModal" class="reveal-modal" data-reveal>
+   <form>
+         <div class="row">
+           <div class="large-12 columns" id="sign-in">
+               <h2>Welcome Back </h2>
+               <input type="text" name="username" placeholder="Username" />
+           </div>
+         </div>
+        <div class="row">
+           <div class="large-12 columns">
+               <input type="password" name="password" placeholder="Password" />
+           </div>
+        </div>
+        <div class="row">
+          <div class="large-12 large-centered columns">
+              <a href="index.html">
+                <input id="login-modal" class="button small radius expand" value="Log In"/>
+              </a>
+          </div>
+        </div>
+      </form>
+</div>
+
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a id="top-left-logo" href="#">MedMent<i class="fa fa-clock-o"></i></a></h1>
+      </li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <li><a id="top-right-nav" href="#">Get Started</a></li>
+
+                <li id="home-sign-in"><a id="top-right-nav" href="#"><a href="#" id="sign-in-modal" data-reveal-id="myModal">Sign In</a></a></li>
+      </ul>
+    </section>
+  </nav>
+
+  <div id="home-orbit">
+    <ul class="orbit" data-orbit>
+      <li><img src="foundation-5.4.7/img/1.jpg" alt="slide 1"/></li>
+      <li><img src="foundation-5.4.7/img/2.jpg" alt="slide 2"/></li>
+      <li><img src="foundation-5.4.7/img/4.jpeg" alt="slide 3"/></li>
+    </ul>
+  </div>
+
+  <div class="row" id="main-content">
+    <div class="large-12 columns">
+     <h2 id="info-header">What we can do for you</h2>
+     <h5>Physicians provide specific times to take medications, and abiding by these schedules is essential for the medicine to work properly and to avoid adverse side effects. Unfortunately our loved ones often have trouble remembering to take their medicine, but not to worry. Medmento enables you to send customized, automated messages to the people you love, reminding them to take their medications at their scheduled times.</h5>
+   </div>
+ </div>
+ <hr/>
+
+ <div class="row">
+  <div class="large-4 columns">
+    <i class="fa fa-users fa-5x"></i>
+  </div>
+  <div class="large-4 columns">
+    <i class="fa fa-calendar fa-5x"></i>
+  </div>
+  <div class="large-4 columns">
+    <i class="fa fa-phone fa-5x"></i>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-4 columns">
+   <h3>Step 1</h3>
+   <p>To get up-and-running, all you have to do is create a profile.</p>
+ </div>
+ <div class="large-4 columns">
+   <h3>Step 2</h3>
+   <p>Pick a date and time to schedule your phone call reminder. </p>
+ </div>
+ <div class="large-4 columns">
+  <h3>Step 3</h3>
+  <p>A phone call will be sent to the patient when it's time to take their medication.</p>
+</div>
+</div>
+
+  <hr/>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="panel" id="touch">
+      <h3>Get in touch</h3>
+      <div class="row">
+        <div class="large-9 columns">
+          <h4>Comments or suggestions? We'd love to hear from you!</h4>
+        </div>
+        <div class="large-3 columns">
+          <a href="#" class="radius button right" id="home-contact">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="row">
+  <div class="large-12 columns">
+     <hr/>
+    <div class="row">
+      <div class="large-12 columns">
+        <p>&copy; 2014 Dev Bootcamp Final Project | Alberto Villacorta, John Lin, Juan Mendez, Kevin Chen.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="foundation-5.4.7/js/vendor/jquery.js"></script>
+<script src="foundation-5.4.7/js/foundation/foundation.js"></script>
+<script src="foundation-5.4.7/js/foundation/foundation.orbit.js"></script>
+<script src="foundation-5.4.7/js/foundation.min.js"></script>
+<script>
+
+$(document).foundation({
+  orbit: {
+    animation: 'slide',
+    timer_speed: 3000,
+    pause_on_hover: true,
+    animation_speed: 600,
+    navigation_arrows: true,
+    bullets: false
+  }
+});
+
+</script>
+</body>
+</html>

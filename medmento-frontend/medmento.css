@@ -1,0 +1,217 @@
+.reminder-container {
+  margin: 30px 0;
+  color: #404040;
+}
+
+.main-section {
+  padding-left: 4em;
+}
+
+a {
+  color: #404040;
+}
+
+#reminder-box {
+  border: 2px solid #466d98;
+}
+
+#section-header {
+  margin-top: 30px;
+}
+
+.button {
+  border-radius: 5px;
+  background-color: #1eb5ad;
+}
+
+#delete-button {
+  background-color: #f25c4d;
+  margin-right: 20px;
+}
+
+.modal-header {
+  color: #1eb5ad;
+}
+
+#nav-logout {
+  color: #f25c4d;
+  margin-right: 20px;
+}
+
+.big-icon {
+  font-size: 52px;
+}
+
+.top-bar  {
+  background-color: #2cb4ac;
+}
+
+#logout {
+  font-size: 20px;
+  padding-right: 65px;
+  background-color: #2cb4ac;
+  font-family: 'Rosario', sans-serif;
+}
+
+#home-med {
+  font-size: 45px;
+  font-family: 'Julius Sans One', sans-serif;
+  padding-left: 65px;
+}
+
+#med-row {
+  font-size: 30px;
+}
+
+.large-4 {
+  padding: 15px 0;
+}
+
+.large-4 strong {
+  font-size: 45px;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.large-4 span {
+  font-size: 30px;
+}
+
+.button {
+  font-family: 'Rosario', sans-serif;
+}
+
+.home-header-div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: initial;
+}
+
+#set-reminder-btn {
+  padding-left: 6em;
+}
+#set-reminder-btn a {
+  margin-top: 1em;
+  font-family: 'Rosario', sans-serif;
+}
+
+#header-top h1 {
+  padding-left: 3.8em;
+  margin-top: .5em;
+  font-family: 'Rosario', sans-serif;
+}
+
+.large-2 {
+  word-wrap: break-word;
+}
+
+
+#daily {
+  background-color: red;
+  padding: 0 4em;
+}
+
+#weekly  {
+  background-color: red;
+  padding: 0 .4em;
+}
+
+#clear-button-modal {
+  font-size: 19px;
+  margin-right: 3em;
+}
+
+#save-button {
+  font-size: 19px;
+  margin: 0 1em;
+}
+
+#formModal textarea {
+  height: 100px;
+}
+
+hr {
+  width:96%;
+}
+
+
+.large-3 p {
+  font-size: 29px;
+  word-wrap: break-word;
+}
+
+i {
+  color: #2cb4ac;
+}
+
+.reminder-container {
+  margin-right: 2.3em;
+}
+
+#message p {
+  font-size: 23px;
+}
+
+#delete p {
+  font-size: .8em
+}
+
+#med-row P {
+  font-size: 1em;
+}
+
+#formModal h1  {
+  font-family: 'Julius Sans One', sans-serif;
+  color: black;
+}
+
+#formModal label {
+  font-size: 1.5em;
+    font-family: 'Rosario', sans-serif;
+  color: #2cb4ac;
+
+}
+
+#daily-text {
+  font-size: 1.1em;
+}
+#weekly-text{
+
+  font-size: 1.1em;
+}
+
+#at {
+  font-size: 1.5em;
+    font-family: 'Rosario', sans-serif;
+  color: #2cb4ac;
+}
+
+#user-chart-modal {
+  padding-left: 5em;
+  text-align: center;
+}
+
+#chartModal h2 {
+  text-align: center;
+      font-family: 'Rosario', sans-serif;
+
+}
+
+#chartModal h5 {
+  text-align: center;
+}
+
+#on  {
+font-size: 1.5em;
+font-family: 'Rosario', sans-serif;
+color: #2cb4ac;
+}
+
+#pain-avg {
+ font-size: 1.5em;
+}
+
+#home-med i {
+  font-size: .85em;
+  color: white;
+}

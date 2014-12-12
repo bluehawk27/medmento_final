@@ -1,58 +1,67 @@
 Medmento
 ==============
-Medmento is an application that allows you to schedule phone call reminders in the future for your loved one; reminding them to take their medication at the schedule time. Through the phone's keypad, Medmento can also collect patient data by asking the patient to answer questions on their feelings and pain levels. Medmento aims to help patients and their loved ones track the intake and perceived effectiveness of medications that have been prescribed to them.
+Medmento is a medication reminder and pain management app for caretakers.
 
-##How to set it up
-Assuming you are running on a mac, you should be able to start the app with the following steps.
+With Medmento, you (the caretaker) can send your loved ones (father, mother, and grandparents) a reminder phone call to take their medication.  You can set a daily reminder, or weekly reminder at any time you choose -- down to the minute. You can also add a personalized message, so your loved ones know you care.
 
-####Twiolio Account(john?)
+Perhaps just as important, you can track how much pain your loved ones feel *over time*. Our system collects patient data on a 0-9 scale and provides graphical display. Our aim is to help caretakers and their loved ones track the perceived effectiveness of medications.
 
-####Back end
-To Run the Rails API background on your local Machine:
+Other features we may add in the future are:  alerts for when your loved one's pain spikes, email messages to the doctor, and a log how the patient feels each day (a "Twitter" for how they feel). 
 
-1. run rake db:create db:migrate db:seed
+##Software Architecture
 
-2. Open 5 tabs in your terminal and move to this root directory in all. Then in order start the following servers on the commandline with the following commands, each in its own tab.
+![Medmento Data Flow](imgs/Medmento_Architecture.png)
 
-3. redis server
+[Click here for a more detailed look](http://prezi.com/g2kx3qdhe1gd/?utm_campaign=share&utm_medium=copy&rc=ex0share).
 
-4. be sidekiq
+##Taking Medmento for a Test Drive
+As Medmento requires Sidekiq and Redis, we decided not to host our Rails backend on Heroku. If you'd like to test out Medmento on your local environment, follow these steps (on Mac terminal).
 
-5. ./bin/ngrok 3000
+####Setting up the Back-end
 
-6. rails s
+1. `git clone https://github.com/bluehawk27/medmento_final.git` to this repository onto your local environment: 
+2. `rake db:create db:migrate db:seed` in the root directory.
+3. Open 5 terminal tabs. Change each tab's directory to the memento root.
+4. `redis server` in the first tab.
+5. `be sidekiq` in the next tab.
+6. `./bin/ngrok 3000` in the next tab. 
+	* Copy the ngrok url 
+	* Open the `.env` file
+	* Paste the ngrok url into `BASE_URL`
+7. `rails s` in the next tab.
+8. Sign-up for Twilio.
+	* Open the `.env` file
+	* Copy & paste your `ACCOUNT_SID` and `AUTH_TOKEN` from Twilio into `.env
+	* Open `twilio_worker.rb` and replace `CALLER_NUM` with your phone number.
+9. `be clockwork config/clock.rb` in the final tab. Clockwork will now start pinging the database at a regular interval.
+	* You can change how often clockwork pings the database in the `clock.rb` file. We set Clockwork to check the database every 10 seconds.
 
-7. be clockwork config/clock.rb    => This will start the clockwork gem and it will begin pinging the Database for events to fire off.
+####Setting up the Front-end
+In the `medmento-frontend` folder, you'll see the static files we used to interact with our Rails API. 
 
-####Configuration
-The url given to you in the ngrok tab must be passed along in in your local .env file for use throughout the app. (ex: BASE_URL=1c1e5a20.ngrok.com/webhooks)
+To run these locally, simply (1) open the `index.html` file in your browser. Then, (2) Create, Read, Update, or Delete a reminder!* See more in "How it Works".
 
-Now you can open the front end file and play with the app.
+*In `medmento.js`, you can see that the API endpoints default to `localhost:3000/*` or `medmento.herokuapp.com`. The Heroku App **does not** make a phone call because the API requires Redis and Sidekiq.
+
+
+##How it works (From The Customer's Perspective)
 
 ####Front end
 
-This file holds view templates that allows you to interact with the rails api.  You can run these locally on your machine by launching the index.html in a browser.
+1. Once logged in, a caretaker clicks "Set A Reminder" button on the top left.
 
-The rails api must be up and running for the files to interact with the app. Please refer to the Medmento-api file README for instructions to launch the backend.
+2. The caretaker fills in the name of the loved one, reminder date, and a custom message.
 
-
-##How it works
-
-####Front end
-
-1. once logged in, a user can set a new reminder by clicking on the "Set A Reminder" button in the top left.
-
-2. after adding the reminder details, and clicking save, the reminder event gets saved in the rails api data base.
-
-3. similarly, editing or deleting a reminder on the front end updates or destroys the corresponding event in the back end.
+3. Click "Save". The form data is serialized and passed as a JSON object to our Rails API. Similarly, editing or deleting a reminder on  updates or destroys the corresponding event in the back end.
 
 ####Back End
 
-1. every 10 seconds (as set by the developers of this app), Clockwork checks the rails api database for a reminder event that matches the current time (i.e., Time.now).
+4. When all services are running (check "Setting up the Back-end"), `clockwork` will check the database every 10 seconds (you can set any interval). Clockwork looks for three Time fields in each record of our Events table. 
 
-2. when it finds a matching event, clockwork invokes Sidekiq and sends it the event's corresponding data.
+5. When the Time fields match the current time (i.e., Time.now), Clockwork invokes our Sidekiq worker -- `TwilioWorker`. Clockwork also passes in the relevant record data to our `TwilioWorker`
 
-3. Sidekiq then passes it to Redis, where it is queued and eventually sent back to Sidekiq when it hits the front of the queue.
+6. `TwilioWorker` processes the background job into a JSON and stores the job to Redis. Redis enqueues the job. 
 
-4. Sidekiq then calls its Sidekiq worker, which uses the Twilio API as well as the event data to make a call to the appropriate phone number.
+7. When the job time comes, Redis dequeues the job; Sidekiq pulls the data. 
 
+8. `TwilioWorker` makes a call to the Twilio API...to call your loved one -- with your custom message and information.

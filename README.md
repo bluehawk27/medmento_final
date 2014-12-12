@@ -36,4 +36,13 @@ This file holds view templates that allows you to interact with the rails api.  
 The rails api must be up and running for the files to interact with the app. Please refer to the Medmento-api file README for instructions to launch the backend.
 
 
+##How it works
+
+1. every 10 seconds (as set by the developers of this app), Clockwork checks the rails api database for a reminder event that matches the current time (i.e., Time.now).
+
+2. when it finds a matching event, clockwork invokes Sidekiq and sends it the event's corresponding data.
+
+3. Sidekiq then passes it to Redis, where it is queued and eventually sent back to Sidekiq when it hits the front of the queue.
+
+4. Sidekiq then calls its Sidekiq worker, which uses the Twilio API as well as the event data to make a call to the appropriate phone number.
 

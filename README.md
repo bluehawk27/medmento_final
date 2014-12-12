@@ -1,7 +1,6 @@
 Medmento
 ==============
-
-Medmento aims to help patients and their loved ones track the intake and perceived effectiveness of medications that have been prescribed to them.
+Medmento is an application that allows you to schedule phone call reminders in the future for your loved one; reminding them to take their medication at the schedule time. Through the phone's keypad, Medmento can also collect patient data by asking the patient to answer questions on their feelings and pain levels. Medmento aims to help patients and their loved ones track the intake and perceived effectiveness of medications that have been prescribed to them.
 
 ##How to set it up
 Assuming you are running on a mac, you should be able to start the app with the following steps.

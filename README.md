@@ -23,7 +23,7 @@ To Run the Rails API background on your local Machine:
 
 6. rails s
 
-7. be clockwork config/clock.rb will start the clockwork gem and it will begin pinging the Database for events to fire off.
+7. be clockwork config/clock.rb    => This will start the clockwork gem and it will begin pinging the Database for events to fire off.
 
 ####Configuration
 The url given to you in the ngrok tab must be passed along in in your local .env file for use throughout the app. (ex: BASE_URL=1c1e5a20.ngrok.com/webhooks)
@@ -32,7 +32,7 @@ Now you can open the front end file and play with the app.
 
 ####Front end
 
-This file holds view templates that allows you to interact with the rails api.
+This file holds view templates that allows you to interact with the rails api.  You can run these locally on your machine by launching the index.html in a browser.
 
 The rails api must be up and running for the files to interact with the app. Please refer to the Medmento-api file README for instructions to launch the backend.
 

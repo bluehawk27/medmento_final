@@ -41,7 +41,7 @@ In the `medmento-frontend` folder, you'll see the static files we used to intera
 
 To run these locally, simply (1) open the `index.html` file in your browser. Then, (2) Create, Read, Update, or Delete a reminder!* See more in "How it Works".
 
-*In `medmento.js`, you can see that the API endpoints default to `localhost:3000/*` or `medmento.herokuapp.com`. The Heroku App **does not** make a phone call because the API requires Redis and Sidekiq.
+*In `medmento.js`, you can see that the API endpoints default to `localhost:3000` or `medmento.herokuapp.com`. The Heroku App **does not** make a phone call because the API requires Redis and Sidekiq.
 
 
 ##How it works (From The Customer's Perspective)

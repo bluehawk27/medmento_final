@@ -38,6 +38,16 @@ The rails api must be up and running for the files to interact with the app. Ple
 
 ##How it works
 
+####Front end
+
+1. once logged in, a user can set a new reminder by clicking on the "Set A Reminder" button in the top left.
+
+2. after adding the reminder details, and clicking save, the reminder event gets saved in the rails api data base.
+
+3. similarly, editing or deleting a reminder on the front end updates or destroys the corresponding event in the back end.
+
+####Back End
+
 1. every 10 seconds (as set by the developers of this app), Clockwork checks the rails api database for a reminder event that matches the current time (i.e., Time.now).
 
 2. when it finds a matching event, clockwork invokes Sidekiq and sends it the event's corresponding data.

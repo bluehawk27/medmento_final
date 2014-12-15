@@ -14,7 +14,7 @@ Other features we may add in the future are:  alerts for when your loved one's p
 
 [Click here for a more detailed look](http://prezi.com/g2kx3qdhe1gd/?utm_campaign=share&utm_medium=copy&rc=ex0share).
 
-##Taking Medmento for a Test Drive
+##Test-Driving Medmento
 As Medmento requires Sidekiq and Redis, we decided not to host our Rails backend on Heroku. If you'd like to test out Medmento on your local environment, follow these steps (on Mac terminal).
 
 ####Setting up the Back-end
@@ -39,14 +39,12 @@ As Medmento requires Sidekiq and Redis, we decided not to host our Rails backend
 ####Setting up the Front-end
 In the `medmento-frontend` folder, you'll see the static files we used to interact with our Rails API. 
 
-To run these locally, simply (1) open the `index.html` file in your browser. Then, (2) Create, Read, Update, or Delete a reminder!* See more in "How it Works".
+To run these locally, simply (1) open the `index.html` file in your browser. Then, (2) Create, Read, Update, or Delete a reminder!^ See more in "How it Works".
 
-*In `medmento.js`, you can see that the API endpoints default to `localhost:3000` or `medmento.herokuapp.com`. The Heroku App **does not** make a phone call because the API requires Redis and Sidekiq.
+^In `medmento.js`, you can see that the API endpoints default to `localhost:3000` or `medmento.herokuapp.com`. The Heroku App **does not** make a phone call because the API requires Redis and Sidekiq.
 
 
-##How it works (From The Customer's Perspective)
-
-####Front end
+##How it works (if you didn't click the Prezi)
 
 1. Once logged in, a caretaker clicks "Set A Reminder" button on the top left.
 
@@ -54,9 +52,13 @@ To run these locally, simply (1) open the `index.html` file in your browser. The
 
 3. Click "Save". The form data is serialized and passed as a JSON object to our Rails API. Similarly, editing or deleting a reminder on  updates or destroys the corresponding event in the back end.
 
-####Back End
+4. When all services are running (check "Setting up the Back-end"), `clockwork` will check the database every 10 seconds (you can set any interval). [Clockwork](http://github.com/tomykaira/clockwork#quickstart) looks for three Time fields in each record of our Events table:  `frequency_quantity`, `frequency_period`, `at`. Here are examples on how to properly store the attributes (namely the `at` field):
 
-4. When all services are running (check "Setting up the Back-end"), `clockwork` will check the database every 10 seconds (you can set any interval). Clockwork looks for three Time fields in each record of our Events table. 
+| `frequency_quantity` | `frequency_period` | `at` | clockwork interpretation |
+|---|---|---|---|
+| 1 | week | day, hour & minutes: `Monday 1:30` | "every 1 week on Monday at 1:30AM" |
+| 1 | day | hour & minutes: `13:30` | "every 1 day at 1:30PM"|
+| 1 | hour | minutes: `**:30` | "every 1 hour at the 30 minute mark" |
 
 5. When the Time fields match the current time (i.e., Time.now), Clockwork invokes our Sidekiq worker -- `TwilioWorker`. Clockwork also passes in the relevant record data to our `TwilioWorker`
 

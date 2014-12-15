@@ -52,13 +52,7 @@ To run these locally, simply (1) open the `index.html` file in your browser. The
 
 3. Click "Save". The form data is serialized and passed as a JSON object to our Rails API. Similarly, editing or deleting a reminder on  updates or destroys the corresponding event in the back end.
 
-4. When all services are running (check "Setting up the Back-end"), `clockwork` will check the database every 10 seconds (you can set any interval). [Clockwork](http://github.com/tomykaira/clockwork#quickstart) looks for three Time fields in each record of our Events table:  `frequency_quantity`, `frequency_period`, `at`. Here are examples on how to properly store the attributes (namely the `at` field):
-
-| `frequency_quantity` | `frequency_period` | `at` | clockwork interpretation |
-|---|---|---|---|
-| 1 | week | day, hour & minutes: `Monday 1:30` | "every 1 week on Monday at 1:30AM" |
-| 1 | day | hour & minutes: `13:30` | "every 1 day at 1:30PM"|
-| 1 | hour | minutes: `**:30` | "every 1 hour at the 30 minute mark" |
+4. When all services are running (check "Setting up the Back-end"), `clockwork` will check the database every 10 seconds (you can set any interval). [Clockwork](http://github.com/tomykaira/clockwork#quickstart) looks for three Time fields in each record of our Events table:  `frequency_quantity`, `frequency_period`, `at`.
 
 5. When the Time fields match the current time (i.e., Time.now), Clockwork invokes our Sidekiq worker -- `TwilioWorker`. Clockwork also passes in the relevant record data to our `TwilioWorker`
 
@@ -67,3 +61,16 @@ To run these locally, simply (1) open the `index.html` file in your browser. The
 7. When the job time comes, Redis dequeues the job; Sidekiq pulls the data. 
 
 8. `TwilioWorker` makes a call to the Twilio API...to call your loved one -- with your custom message and information.
+
+##Understanding Clockwork
+Clockwork checks three fields: `frequency_quantity`, `frequency_period`, `at`. To properly store the the attribute data, you have to understand how Clockwork interprets these three fields. 
+
+The hardest field to understand is `at`, so we've provided a few examples on how to store the data:
+
+| `frequency_quantity` | `frequency_period` | `at` | clockwork interpretation |
+|---|---|---|---|
+| 1 | week | day, hour & minutes: `Monday 1:30` | "every 1 week on Monday at 1:30AM" |
+| 1 | day | hour & minutes: `13:30` | "every 1 day at 1:30PM"|
+| 1 | hour | minutes: `**:30` | "every 1 hour at the 30 minute mark" |
+
+As you can see, the `at` data is specified *from* the `frequency_period`. When you want to set a weekly clockwork action, `at` must specify the day of the week, as well as the hour and minute. When you want to specify a daily clockwork action, `at` needs the hour and minute. For an hourly clockwork action, you simply need to provide the minute mark (don't forget the `**`).

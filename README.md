@@ -14,6 +14,20 @@ Other features we may add in the future are:  alerts for when your loved one's p
 
 [Click here for a more detailed look](http://prezi.com/g2kx3qdhe1gd/?utm_campaign=share&utm_medium=copy&rc=ex0share).
 
+####Challenges
+By far the biggest challenge we had was implementing a background job at *scheduled* intervals. We looked at a combination of options, but, for one reason or another, they all failed to solve the technical problem we faced. Here are a few options we considered:
+
+- [gem whenever](http://github.com/javan/whenever)
+- [gem rufus-scheduler](http://github.com/jmettraux/rufus-scheduler)
+- [Heroku Scheduler](http://addons.heroku.com/scheduler)
+- Rails 4.2 [Active Jobs](http://edgeguides.rubyonrails.org/active_job_basics.html)
+- Resque with [resque-scheduler](http://github.com/resque/resque-scheduler)
+
+Each gem failed for one or a combination of the same reasons: (1) They required us to -- more or less -- write a custom rake task to check and pull event data from the database. (2) The gems were written in Cron, and Cron is only meant for the local environment. (3) The gems did not lend themselves as flexible to use with Sidekiq.
+
+####Our Architecture of Choic
+The only ***scalable*** architecture was to use Sidekiq and [Clockwork](http://github.com/tomykaira/clockwork) ***together***. Sidekiq's multi-threaded nature and use of Redis enabled Sidekiq to process jobs in parallel and with a smaller memory footprint -- as compared with other background processing libraries like Delayed Job or Resque. 
+
 ##Test-Driving Medmento
 As Medmento requires Sidekiq and Redis, we decided not to host our Rails backend on Heroku. If you'd like to test out Medmento on your local environment, follow these steps (on Mac terminal).
 
@@ -74,3 +88,16 @@ The hardest field to understand is `at`, so we've provided a few examples on how
 | 1 | hour | minutes: `**:30` | "every 1 hour at the 30 minute mark" |
 
 As you can see, the `at` data is specified *from* the `frequency_period`. When you want to set a weekly clockwork action, `at` must specify the day of the week, as well as the hour and minute. When you want to specify a daily clockwork action, `at` needs the hour and minute. For an hourly clockwork action, you simply need to provide the minute mark (don't forget the `**`).
+
+##Test Coverage
+Using [SimpleCov](http://github.com/colszowka/simplecov), we were able to hit over 95% test coverage on the back-end:
+
+![Medmento Data Flow](imgs/SimpleCov_Coverage.png)
+
+##Contact
+If you have any further questions, don't hesitate to reach out to any one of us:
+
+-	Kevin Chen:  [GitHub](http://github.com/kchens), [LinkedIn](http://www.linkedin.com/in/kevinkangchen)
+-	Alberto Villacorta:  [GitHub](http://github.com/bluehawk27), [LinkedIn](https//www.linkedin.com/in/albertovillacorta)
+-	John Lin:  [GitHub](http://github.com/johnlin1214), [LinkedIn](http://www.linkedin.com/pub/john-lin/2b/852/a26?trk=pub-pbmap)
+-	John Mendez:  [GitHub](http://github.com/jupamedig), [LinkedIn](http://www.linkedin.com/in/juanpablomendez)

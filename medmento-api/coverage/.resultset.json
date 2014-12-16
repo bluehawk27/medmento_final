@@ -1,14 +1,14 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/user/Desktop/medmento/config/environment.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/user/Desktop/medmento/config/application.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/application.rb": [
         1,
         null,
         null,
@@ -47,13 +47,13 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/config/boot.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/boot.rb": [
         null,
         1,
         null,
         1
       ],
-      "/Users/user/Desktop/medmento/config/environments/test.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/environments/test.rb": [
         1,
         null,
         null,
@@ -94,7 +94,7 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/config/initializers/assets.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -104,7 +104,7 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/config/initializers/backtrace_silencers.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -113,18 +113,18 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/config/initializers/cookies_serializer.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/initializers/cookies_serializer.rb": [
         null,
         null,
         1
       ],
-      "/Users/user/Desktop/medmento/config/initializers/filter_parameter_logging.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/Users/user/Desktop/medmento/config/initializers/inflections.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -142,18 +142,18 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/config/initializers/mime_types.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/initializers/mime_types.rb": [
         null,
         null,
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/config/initializers/session_store.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/initializers/session_store.rb": [
         null,
         null,
         1
       ],
-      "/Users/user/Desktop/medmento/config/initializers/wrap_parameters.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -169,7 +169,7 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/config/routes.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/config/routes.rb": [
         1,
         null,
         1,
@@ -180,87 +180,39 @@
         1,
         1,
         1,
+        1,
+        null,
         null,
         null,
         null,
         1,
         null,
         1,
-        null,
         1,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/app/helpers/application_helper.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/user/Desktop/medmento/app/helpers/events_helper.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/app/helpers/events_helper.rb": [
         1,
         null
       ],
-      "/Users/user/Desktop/medmento/app/helpers/users_helper.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/Users/user/Desktop/medmento/app/controllers/api/v1/clockwork_events_controller.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/app/helpers/webhooks_helper.rb": [
+        1,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/app/controllers/api/v1/clockwork_events_controller.rb": [
         1,
         1,
         1,
@@ -297,7 +249,7 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/app/controllers/application_controller.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -308,7 +260,7 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/spec/api/users_spec.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/spec/api/users_spec.rb": [
         null,
         null,
         null,
@@ -325,13 +277,13 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/spec/controllers/events_controller_spec.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/spec/controllers/events_controller_spec.rb": [
 
       ],
-      "/Users/user/Desktop/medmento/spec/controllers/users_controller_spec.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/spec/controllers/users_controller_spec.rb": [
 
       ],
-      "/Users/user/Desktop/medmento/spec/helpers/events_helper_spec.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/spec/helpers/events_helper_spec.rb": [
         1,
         null,
         null,
@@ -348,7 +300,7 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/spec/rails_helper.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/spec/rails_helper.rb": [
         null,
         1,
         1,
@@ -402,7 +354,63 @@
         1,
         null
       ],
-      "/Users/user/Desktop/medmento/spec/helpers/users_helper_spec.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/db/schema.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/spec/helpers/users_helper_spec.rb": [
         1,
         null,
         null,
@@ -419,28 +427,28 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/spec/models/event_spec.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/spec/models/event_spec.rb": [
         null,
         null,
         null,
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/spec/models/painrating_spec.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/spec/models/painrating_spec.rb": [
         null,
         null,
         null,
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/spec/models/user_spec.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/spec/models/user_spec.rb": [
         null,
         null,
         null,
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/spec/sidekiq/sidekiq_spec.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/spec/sidekiq/sidekiq_spec.rb": [
         1,
         null,
         1,
@@ -457,7 +465,7 @@
         null,
         null
       ],
-      "/Users/user/Desktop/medmento/app/models/clockwork_event.rb": [
+      "/Users/MightyMouse/Desktop/DevBootcamp/phase-3/final-project/medmento_final/medmento-api/app/models/clockwork_event.rb": [
         1,
         1,
         1,
@@ -473,6 +481,6 @@
         null
       ]
     },
-    "timestamp": 1417719801
+    "timestamp": 1418759792
   }
 }

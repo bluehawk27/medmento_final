@@ -1,5 +1,6 @@
 Medmento
 ==============
+![Medmento](imgs/Medmento_Logo.png)
 Medmento is a medication reminder and pain management app for caretakers.
 
 With Medmento, you (the caretaker) can send your loved ones (father, mother, and grandparents) a reminder phone call to take their medication.  You can set a daily reminder, or weekly reminder at any time you choose -- down to the minute. You can also add a personalized message, so your loved ones know you care.
@@ -25,7 +26,7 @@ By far the biggest challenge we had was implementing a background job at *schedu
 
 Each gem failed for one or a combination of the same reasons: (1) They required us to -- more or less -- write a custom rake task to check and pull event data from the database. (2) The gems were written in Cron, and Cron is only meant for the local environment. (3) The gems did not lend themselves as flexible to use with Sidekiq.
 
-####Our Architecture of Choic
+####Our Architecture of Choice
 The only ***scalable*** architecture was to use Sidekiq and [Clockwork](http://github.com/tomykaira/clockwork) ***together***. Sidekiq's multi-threaded nature and use of Redis enabled Sidekiq to process jobs in parallel and with a smaller memory footprint -- as compared with other background processing libraries like Delayed Job or Resque. 
 
 ##Test-Driving Medmento
@@ -59,6 +60,11 @@ To run these locally, simply (1) open the `index.html` file in your browser. The
 
 
 ##How it works (if you didn't click the Prezi)
+Click here to see the front-end:  [Medmento](http://kchens.github.io/projects/medmento/medmento-frontend/homepage). After hitting the homepage, click "Sign In" -> "Log In". 
+
+You'll be brought to this page. Then, you can follow the steps below. NOTE: The backend is not *fully* set-up on Heroku, so you won't receive a phone call.
+
+![Dashboard](imgs/Medmento_Dashboard.png)
 
 1. Once logged in, a caretaker clicks "Set A Reminder" button on the top left.
 
@@ -75,6 +81,10 @@ To run these locally, simply (1) open the `index.html` file in your browser. The
 7. When the job time comes, Redis dequeues the job; Sidekiq pulls the data. 
 
 8. `TwilioWorker` makes a call to the Twilio API...to call your loved one -- with your custom message and information.
+
+9. The pain chart should be updated with your loved one's new pain rating.
+
+![Pain Chart](imgs/Pain_Chart.png)
 
 ##Understanding Clockwork
 Clockwork checks three fields: `frequency_quantity`, `frequency_period`, `at`. To properly store the the attribute data, you have to understand how Clockwork interprets these three fields. 
@@ -98,6 +108,6 @@ Using [SimpleCov](http://github.com/colszowka/simplecov), we were able to hit ov
 If you have any further questions, don't hesitate to reach out to any one of us:
 
 -	Kevin Chen:  [GitHub](http://github.com/kchens), [LinkedIn](http://www.linkedin.com/in/kevinkangchen)
--	Alberto Villacorta:  [GitHub](http://github.com/bluehawk27), [LinkedIn](https//www.linkedin.com/in/albertovillacorta)
 -	John Lin:  [GitHub](http://github.com/johnlin1214), [LinkedIn](http://www.linkedin.com/pub/john-lin/2b/852/a26?trk=pub-pbmap)
 -	John Mendez:  [GitHub](http://github.com/jupamedig), [LinkedIn](http://www.linkedin.com/in/juanpablomendez)
+-	Alberto Villacorta:  [GitHub](http://github.com/bluehawk27), [LinkedIn](https//www.linkedin.com/in/albertovillacorta)

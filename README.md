@@ -1,6 +1,6 @@
-Medmento
-==============
 ![Medmento](imgs/Medmento_Logo.png)
+==============
+
 Medmento is a medication reminder and pain management app for caretakers.
 
 With Medmento, you (the caretaker) can send your loved ones (father, mother, and grandparents) a reminder phone call to take their medication.  You can set a daily reminder, or weekly reminder at any time you choose -- down to the minute. You can also add a personalized message, so your loved ones know you care.

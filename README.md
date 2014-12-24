@@ -20,11 +20,12 @@ By far the biggest challenge we had was implementing a background job at *schedu
 
 - [gem whenever](http://github.com/javan/whenever)
 - [gem rufus-scheduler](http://github.com/jmettraux/rufus-scheduler)
+- [gem sidetiq](http://github.com/tobiassvn/sidetiq)
 - [Heroku Scheduler](http://addons.heroku.com/scheduler)
 - Rails 4.2 [Active Jobs](http://edgeguides.rubyonrails.org/active_job_basics.html)
 - Resque with [resque-scheduler](http://github.com/resque/resque-scheduler)
 
-Each gem failed for one or a combination of the same reasons: (1) They required us to -- more or less -- write a custom rake task to check and pull event data from the database. (2) The gems were written in Cron, and Cron is only meant for the local environment. (3) The gems did not lend themselves as flexible to use with Sidekiq.
+Each gem failed for one or a combination of the same reasons: (1) They required us to -- more or less -- write a custom rake task to check and pull event data from the database. (2) The gems were written in Cron, and Cron is only meant for the local environment. (3) The gems did not lend themselves as flexible to use with Sidekiq. (4) The gems did not allow for events to run on specific times down to the minute.
 
 ####Our Architecture of Choice
 The only ***scalable*** architecture was to use Sidekiq and [Clockwork](http://github.com/tomykaira/clockwork) ***together***. Sidekiq's multi-threaded nature and use of Redis enabled Sidekiq to process jobs in parallel and with a smaller memory footprint -- as compared with other background processing libraries like Delayed Job or Resque. 

@@ -4,8 +4,6 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 gem 'dotenv-rails', :groups => [:development, :test]
-# Use postgresql as the database for Active Record
-gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,11 +24,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
-  gem 'spring',        group: :development
-  gem 'faker',        group: :development
-  gem 'pry',        group: :development
+  gem 'spring'
+  gem 'faker'
+  gem 'pry'
 end
 
+# Use postgresql as the database for Active Record
+gem 'pg'
 
 gem 'rails_12factor'
 gem 'rack-cors', :require => 'rack/cors'
